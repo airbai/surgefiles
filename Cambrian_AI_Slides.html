@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown to Slides Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/dracula.css"> 
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <style>
+        .button-container {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            margin: 10px;
+            background-color: white;
+        }
+        .custom-button {
+            display: inline-block;
+            margin-top: 5px;
+            margin-right: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template id="contents">
+
+# Cambrian-1 和最新 AI 动态
+
+---
+
+## 1. Cambrian-1: 视觉 MLLM 诞生
+纽约大学谢赛宁教授和Yann LeCun团队发布Cambrian-1，一个强调视觉表征学习的多模态大型语言模型。
+
+---
+
+## 2. Figma AI 开启免费公测
+Figma推出AI版本，带来视觉搜索、AI增强的资产搜索等新功能。
+
+---
+
+## 3. Claude 推出 Projects 新功能
+Claude为会员推出定制化聊天机器人服务。
+
+---
+
+## 4. Google 翻译新增110种语言
+Google翻译新增110种语言，覆盖6.14亿用户。
+
+---
+
+## 5. 字节开发工具「豆包 MarsCode」上线
+字节跳动发布AI开发工具「豆包 MarsCode」。
+
+---
+
+## 6. 星火大模型 v4.0 发布
+科大讯飞发布星火大模型 v4.0。
+
+---
+
+## 7. 软银将投资 Perplexity AI
+软银投资 Perplexity AI。
+
+---
+
+## 8. Etched 获 1.2 亿美元 A 轮融资
+AI芯片初创公司 Etched 完成A轮融资。
+
+---
+
+## 9. AI 时代的纳斯达克 100
+拾象科技推出 AGIX 指数，聚焦50家AI公司。
+
+---
+
+## 10. 每月超8000万用户在B站看AI
+B站AI相关内容用户增长迅速。
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <div class="button-container">
+        <h3>Save slides to PPTX:</h3>
+        <a id="printButton" href="?print-pdf">Step 1: Switch slids to PDF view</a><br>
+        <a id="printButton" href="#" onclick="window.print();" target="_blank">Step 2: Print to PDF file</a><br>
+        <a id="printButton" href="https://smallpdf.com/edit-pdf#r=app" target="_blank">Step 3: Convert PDF file to PPTX</a><br>
+    </div>
+    <script>
+        Reveal.initialize({
+            plugins: [ RevealMarkdown],
+            center: true,
+            slideNumber: 'c/t'
+        });
+    </script>
+</body>
+</html>

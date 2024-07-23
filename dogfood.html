@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可编辑海报生成器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @font-face {
+        font-family: 'jinghualaosongtiV2';
+        src: url('jinghualaosongtiV2.002.ttf') format('truetype'),
+         url('jinghualaosongtiV2.002.ttf.woff') format('woff'),
+         url('jinghualaosongtiV2.002.ttf.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        body::after {
+            content: '京华老宋体';
+            font-family: 'jinghualaosongtiV2', sans-serif;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: white;
+            border: 1px solid black;
+            z-index: 9999;
+            font-size:xx-large;
+        }
+
+        #poster {
+    font-family: 'jinghualaosongtiV2', sans-serif;
+    width: 540px;
+    height: 1168.5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    background-image: linear-gradient(to bottom, #ffffff, #a8e6cf), url('design-space-paper-textured-background_53876-147801 (1).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-blend-mode: multiply; /* 调整混合模式 */
+}
+
+/*
+        #poster {
+            font-family: 'jinghualaosongtiV2', sans-serif;
+            width: 540px;
+            height: 1168.5px;
+            background: linear-gradient(to bottom, #ffffff, #a8e6cf);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            background: url('design-space-paper-textured-background_53876-147801 (1).jpg') no-repeat center center; 
+            background-size: cover;
+        }
+
+
+
+        #poster {
+    font-family: 'jinghualaosongtiV2', sans-serif;
+    width: 540px;
+    height: 1168.5px;
+    background: linear-gradient(to bottom, #ffffff, #a8e6cf);
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 0 20px rgba(0,0,0,0.1) inset; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding: 20px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f1e6d2 100%);
+    border-radius: 10px;
+}*/
+
+
+        .editable {
+            border: none;
+            background: transparent;
+            position: absolute;
+            width: 90%;
+            left: 5%;
+
+            font-family: 'jinghualaosongtiV2', sans-serif;
+
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .small-text { 
+            font-size: 14px; 
+            font-family: 'jinghualaosongtiV2', sans-serif;
+        }
+
+        .x-medium-text { 
+            font-size: 18px; 
+            font-family: 'jinghualaosongtiV2', sans-serif;
+        }
+
+        .xx-medium-text { 
+            font-size: 28px; 
+            font-family: 'jinghualaosongtiV2', sans-serif;
+        }
+
+        .medium-text { 
+            font-size: 36px; 
+            font-family: 'jinghualaosongtiV2', sans-serif;
+        }
+        .large-text { 
+            font-size: 70px; 
+            font-weight: bold; 
+            font-family: 'jinghualaosongtiV2', sans-serif;
+        }
+
+        .group6 input
+        {
+            text-align: right;
+        }
+
+        #saveButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="poster">
+            <div class="group1">
+            <input type="text" class="editable small-text" value="垃圾这个概念" style="top: 2%;">
+            <input type="text" class="editable small-text" value="也值得辩证" style="top: 6%;">
+            <input type="text" class="editable small-text" value="为什么你做的就是垃圾呢" style="top: 10%;">
+            <input type="text" class="editable small-text" value="这个世界上很多垃圾的人都在信心满满的躺在台上" style="top: 14%;">
+            <input type="text" class="editable small-text" value="领导团队领导公司" style="top: 18%;">
+            <input type="text" class="editable small-text" value="对着世界指手画脚" style="top: 22%;">
+            <input type="text" class="editable small-text" value="对着别人好为人师" style="top: 26%;">
+            <input type="text" class="editable small-text" value="很多垃圾的人都不知道" style="top: 30%;">
+            <input type="text" class="editable small-text" value="自己其实是垃圾" style="top: 34%;">
+            <input type="text" class="editable small-text" value="你准不一样要了" style="top: 38%;">
+            <input type="text" class="editable small-text" value="什么是真正的垃圾" style="top: 42%;">
+            </div>
+            <div class="group2" style="left: 30%;">
+
+            <input type="text" class="editable medium-text" value="不制作垃圾" style="top: 30%;left: 35%;">
+            <input type="text" class="editable medium-text" value="你就只有" style="top: 34%;left: 35%;">
+            <input type="text" class="editable medium-text" value="焦虑拖延的机会" style="top: 38%;left: 35%;">
+            </div>
+            <div class="group3">
+            <input type="text" class="editable large-text" value="先做个垃圾出来" style="top: 49%;">
+            </div>
+
+            <div class="group4">
+            <input type="text" class="editable medium-text" value="别想着一次成功" style="top: 60%;">
+            <input type="text" class="editable medium-text" value="别想着一稿通过" style="top: 64%;">
+            </div>
+
+            <div class="group5">
+            <input type="text" class="editable x-medium-text" value="通过了也不会怎样" style="top: 73%;">
+            <input type="text" class="editable x-medium-text" value="成功了也还有下一个任务" style="top: 76%;">
+            <input type="text" class="editable x-medium-text" value="先做个垃圾出来" style="top: 79%;">
+            <input type="text" class="editable x-medium-text" value="有垃圾" style="top: 82%; width: auto;">
+            <input type="text" class="editable x-medium-text" value="就有" style="top: 85%; width: auto;">
+            <input type="text" class="editable x-medium-text" value="变废为宝的机会" style="top: 88%; width: auto;">
+            </div>
+
+            <div class="group6">
+            <input type="text" class="editable small-text" value="你做的眞的只是你眼里的垃圾" style="top: 91%; ">
+            <input type="text" class="editable small-text" value="你不做这个垃圾出来" style="top: 93%;">
+            <input type="text" class="editable small-text" value="下一个人做的还不如你做的垃圾好看好用好有价值" style="top: 95%;">
+            <input type="text" class="editable small-text" value="那现在做垃圾的人，凭什么不能是你呢" style="top: 97%;">
+           
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+function loadImage(url, callback) {
+    var img = new Image();
+    img.crossOrigin = 'anonymous'; // 允许跨域访问
+    img.onload = function() {
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        callback(canvas);
+    };
+    img.src = url;
+}
+
+function saveCanvas() {
+    loadImage('design-space-paper-textured-background_53876-147801 (1).jpg', function(canvas) {
+        html2canvas(canvas).then(function(canvas) {
+            var link = document.createElement('a');
+            link.download = 'poster.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    });
+}
+
+document.getElementById('saveButton').addEventListener('click', saveCanvas);*/
+    </script>
+</body>
+</html>
